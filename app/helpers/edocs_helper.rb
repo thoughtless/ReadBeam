@@ -1,0 +1,2 @@
+module EdocsHelper
+end

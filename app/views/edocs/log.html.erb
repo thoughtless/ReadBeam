@@ -1,0 +1,45 @@
+<section>
+	<%= render :partial => 'shared/flash', :locals => {:flash => flash} if flash %>
+	
+  <div class="page-header">
+    <h1><%= @edoc.title %> eDoc</h1>
+  </div>
+	<div class="row">
+		<div class="span3">
+			<h3>Description</h3>
+			<p><%= @edoc.description %></p>
+
+			<% if @edoc.comment %>
+			<h3>Admin Comments</h3>
+			<p><%= @edoc.comment %></p>
+			<% end %>
+
+			<h3>eDoc Status</h3>
+			<p>
+				<%= render :partial => 'shared/tags', :locals => {:edoc => @edoc} %>
+				
+				<% if current_user and current_user.is_admin? %>
+				<span class="label">OID <%= @edoc.owner_id %></span>
+				<%= raw("<span class=\"label notice\">Fresh</span>") if @edoc.file_is_fresh %>
+				<span class="label"><a href="mailto:<%= @edoc.owner.account_email %>">@</a></span>
+				<% end %>
+			</p>
+		</div>
+  	<div class="span9">	
+			<h3>Calibre Conversion Log <small>(<%= @edoc.last_run %>)</small></h3>
+			<% if @edoc.log %>
+			<pre class="prettyprint">
+			  <%= @edoc.log %>
+			</pre>
+			<% else %>
+			<p>(Once the conversion is done you'll find the geeky calibre conversion log here.)</p>
+			<% end %>
+			<%= link_to 'Edit edoc', edit_edoc_path(@sub) %> |
+			<%= link_to 'Back', edocs_path %>
+		</div>
+	</div>
+</section>
+
+<% content_for :javascript do %>
+  $(function() {prettyPrint();});
+<% end %>

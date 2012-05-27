@@ -1,0 +1,46 @@
+<section>
+	<%= render :partial => 'shared/flash', :locals => {:flash => flash} if flash %>
+
+	<div class="page-header">
+	  <h1>Log in <small>to manage your eDocs and settings</small></h1>
+	</div>
+	<div class="row">
+	    <div class="span3 columns">
+	      <h2>Welcome!</h2>
+	      <p>Log in using your account email and password. If you forgot it, reset it below.</p>
+	      <%= render :partial => "devise/shared/links" %>
+	    </div>
+	    <div class="span9 columns">
+	      <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+	        <%= devise_error_messages! %>
+	        <fieldset>
+	          <legend>Log in to your existing account</legend>
+	          <div class="clearfix">
+	            <%= f.label :account_email, 'Your account email' %>
+	            <div class="input">
+	              <%= f.email_field :account_email, :placeholder => 'john.doe@gmail.com', :required => true, :class => :xlarge %>
+	            </div>
+	          </div> <!-- /clearfix -->
+	          <div class="clearfix">
+	            <%= f.label :password %>
+	            <div class="input">
+	              <%= f.password_field :password, :required => true, :class => :xlarge %>
+	            </div>
+	          </div> <!-- /clearfix -->
+	          <% if devise_mapping.rememberable? -%>
+	          <div class="clearfix">
+	            <%= f.label :remember_me %>
+	            <div class="input"></span>
+	              <%= f.check_box :remember_me, :checked => true, :title => 'Choose if you want to have a cookie set to easily log in again' %>
+	            </div>
+	          <% end -%>
+	          </div> <!-- /clearfix -->
+	          <div class="actions">
+	            <%= f.submit 'Log in', :class => 'btn primary' %>
+	          </div>
+	        </fieldset>
+	      </form>
+	    </div>
+	  </div>
+	<% end %>
+</section>

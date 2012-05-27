@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  description: MyText
+  timezone: MyString
+  website: MyString
+  language: MyString
+  schedule: MyString
+  run_distance: 1
+  conversion_options: MyString
+  recipe_hash: MyString
+  recipe_name: MyString
+  requires_login: false
+
+two:
+  title: MyString
+  description: MyText
+  timezone: MyString
+  website: MyString
+  language: MyString
+  schedule: MyString
+  run_distance: 1
+  conversion_options: MyString
+  recipe_hash: MyString
+  recipe_name: MyString
+  requires_login: false

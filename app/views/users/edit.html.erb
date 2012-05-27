@@ -1,0 +1,12 @@
+<section>
+	<%= render :partial => 'shared/flash', :locals => {:flash => flash} if flash %>
+
+  <div class="page-header">
+    <h1>Edit user</h1>
+  </div>
+  <div class="row">
+    <div class="span16">
+			<%= render 'form' %>
+		</div>
+	</div>
+</section>

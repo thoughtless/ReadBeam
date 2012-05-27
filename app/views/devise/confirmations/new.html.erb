@@ -1,0 +1,27 @@
+<section>
+	<%= render :partial => 'shared/flash', :locals => {:flash => flash} if flash %>
+
+	<div class="page-header">
+	  <h1>Resend confirmation instructions <small>and check your emails</small></h1>
+	</div>
+	<div class="row">
+	    <div class="span16 columns">
+				<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+	        <%= devise_error_messages! %>
+	        <fieldset>
+	          <legend>Resend confirmation instructions</legend>
+	          <div class="clearfix">
+	            <%= f.label :account_email, 'Your account email' %>
+	            <div class="input">
+	              <%= f.email_field :account_email, :placeholder => 'john.doe@gmail.com', :required => true, :class => :xlarge %>
+	            </div>
+	          </div> <!-- /clearfix -->
+	          <div class="actions">
+	            <%= f.submit 'Resend confirmation instructions', :class => 'btn primary' %>
+	          </div>
+	        </fieldset>
+	      </form>
+	    </div>
+	  </div>
+	<% end %>
+</section>

@@ -1,0 +1,23 @@
+<% if user_signed_in? %>
+		<a href="<%= edocs_path %>" class="brand"><img src="<%= image_path('logo.png') %>" alt="ReadBeam Logo" width="16" height="16"/> ReadBeam</a>
+		<ul class="nav">
+			<li><%= link_to('eDocs', edocs_path) %></li>
+			<li><%= link_to 'Account', edit_user_registration_path %></li>
+			<li><a href="http://blog.readbeam.com/">Blog</a></li>
+			<li><%= link_to 'Contact', 'mailto:tom@readbeam.com' %></li>
+		</ul>
+		<ul class="nav pull-right">
+			<li><%= link_to "Log out #{current_user.account_email}", destroy_user_session_path, :method => :delete %></li>
+		</ul>
+<% else %>
+		<a href="<%= root_path %>" class="brand"><img src="<%= image_path('logo.png') %>" alt="ReadBeam Logo" width="16" height="16"/> ReadBeam</a>
+		<ul class="nav">
+			<li><%= link_to('Sources', root_path) %></li>
+			<li><a href="http://blog.readbeam.com/">Blog</a></li>
+			<li><%= link_to 'Contact', 'mailto:tom@readbeam.com' %></li>
+		</ul>
+		<ul class="nav pull-right">
+			<li><%= link_to('Log in', new_user_session_path) %></li>
+			<li><%= link_to 'Sign up', new_user_registration_path %></li>
+		</ul>
+<% end %>

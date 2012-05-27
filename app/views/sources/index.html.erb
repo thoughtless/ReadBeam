@@ -1,0 +1,41 @@
+<h1>Listing sources</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Timezone</th>
+    <th>Website</th>
+    <th>Language</th>
+    <th>Schedule</th>
+    <th>Conversion options</th>
+    <th>Recipe hash</th>
+    <th>Recipe name</th>
+    <th>Requires login</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @sources.each do |source| %>
+  <tr>
+    <td><%= source.title %></td>
+    <td><%= source.description %></td>
+    <td><%= source.timezone %></td>
+    <td><%= source.website %></td>
+    <td><%= source.language %></td>
+    <td><%= source.schedule %></td>
+    <td><%= source.conversion %></td>
+    <td><%= source.recipe_hash %></td>
+    <td><%= source.recipe_name %></td>
+    <td><%= source.requires_login %></td>
+    <td><%= link_to 'Show', source %></td>
+    <td><%= link_to 'Edit', edit_source_path(source) %></td>
+    <td><%= link_to 'Destroy', source, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Source', new_source_path %>

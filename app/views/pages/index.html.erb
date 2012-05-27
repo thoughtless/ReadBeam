@@ -1,0 +1,24 @@
+<% content_for :masthead do %>
+<div id="masthead">
+  <div class="inner">
+    <div class="container">
+      <h1>Subscribe to anything</h1>
+      <p class="lead">
+        Subscribe to newspapers, blogs and magazines and more on your<br />
+        Amazon Kindle, Apple iPad and other ebook reading devices.</p>
+      <p>Either download free ebooks below or <%= link_to 'sign up', new_user_registration_path %> and receive your<br />eDocs via email directly on your eBook reader for a small fee.</p>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<section id="all_sources">
+	<%= render :partial => 'shared/flash', :locals => {:flash => flash} if flash %>
+	
+  <div class="page-header">
+    <h1>Subscribe to these eBooks <small> and <strong>much more</strong> with you own recipes</small></h1>
+  </div>
+  <div class="row">
+    <%= render :partial => "shared/sources", :as => :sources, :object => @all_sources if @all_sources %>
+  </div>
+</section>

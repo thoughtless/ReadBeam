@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @source.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @source.description %>
+</p>
+
+<p>
+  <b>Timezone:</b>
+  <%= @source.timezone %>
+</p>
+
+<p>
+  <b>Website:</b>
+  <%= @source.website %>
+</p>
+
+<p>
+  <b>Language:</b>
+  <%= @source.language %>
+</p>
+
+<p>
+  <b>Schedule:</b>
+  <%= @source.schedule %>
+</p>
+
+<p>
+  <b>Conversion options:</b>
+  <%= @source.conversion %>
+</p>
+
+<p>
+  <b>Recipe hash:</b>
+  <%= @source.recipe_hash %>
+</p>
+
+<p>
+  <b>Recipe name:</b>
+  <%= @source.recipe_name %>
+</p>
+
+<p>
+  <b>Requires login:</b>
+  <%= @source.requires_login %>
+</p>
+
+<%= link_to 'Edit', edit_source_path(@source) %> |
+<%= link_to 'Back', sources_path %>

@@ -1,0 +1,43 @@
+# encoding: UTF-8
+
+<section>
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>Perfect eBook Conversion</h1>
+        <p><strong>eBook conversion</strong> with all bells-and-whistles: <a href="<%= root_path %>">ReadBeam ebook conversion</a>. <strong>Compression and formatting</strong>&mdash;exactly your device and <strong>device-specific navigation</strong> make for a great eBook experience.</p>
+		<p><a class="btn primary large" href="/">Online eDoc Conversion &raquo;</a></p>
+      </div>
+			<div class="row">
+        <div class="span4">
+          <h2>Free ebook conversion</h2>
+          <p>Hosting Caliber has many advantages:
+			Choose between free and paid conversion. On the home page you'll find sources that can be downloaded and read for free. If you'd like to convert other sources and even manage all the details of the ebook conversion try ReadBeam.
+		  </p>
+		  <p>
+			Based on calibre it brings a lot of features to ebook conversion. Set all ebook metadata, select the device to convert for, remove or add tags to the source content and much more.
+		</p>
+          <p><a class="btn" href="/">Convert content now &raquo;</a></p>
+
+        </div>
+        <div class="span4">
+          <h2>Calibre Conversion</h2>
+           <p>caliber can convert from a huge number of ebook formats to a huge number of formats. It supports all the major e-book formats. The full list of formats can be found <a href="http://manual.calibre-ebook.com/faq.html#what-formats-does-app-support-conversion-to-from">here</a>.</p>
+<p>The conversion engine has lots of powerful features. It can rescale all font sizes, ensuring the output e-book is readable no matter what font sizes the input document uses. It can automatically detect/create book structure, like chapters and Table of Contents. It can insert the book metadata into a "Book Jacket" at the start of the book</p>
+
+       </div>
+        <div class="span4">
+          <h2>Conversion in the Cloud</h2>
+          <p>Running ebook conversion in the cloud makes a lot of sense. Fetching the content takes a lot of bandwidth and the ebook conversion uses a lot of processing power. Leave this to ReadBeam, we'll take care of this for your reading pleasure.</p>
+		  <p><a href="http://wirgruender.org">Buchhaltung für GmbH Gründer gibt's beim 'Wir Gründer' e.V.</a></p>
+		    	<p><%= link_to raw('Sign up for free &raquo;'), new_user_registration_path, :class => 'btn primary' %></p>
+        </div>
+</section>
+
+<% content_for :big_footer do %>
+  <div style="color:gray">
+    <p>Immediately subscribe to theses ebook sources:</p>
+    <div class="row">
+	    <%= render :partial => "shared/sources", :as => :sources, :object => @all_sources if @all_sources %>
+    </div>
+  </div>
+<% end %>

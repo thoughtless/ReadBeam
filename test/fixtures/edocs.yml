@@ -1,0 +1,55 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  owner_id: 1
+  source_id: 1
+  file_name: MyString
+  title: MyString
+  description: MyText
+  timezone: MyString
+  website: MyString
+  language: MyString
+  schedule: MyString
+  run_distance: 1
+  last_run: 1
+  next_run: 1
+  log: MyText
+  conversion_options: MyString
+  format: MyString
+  device: MyString
+  size: 1
+  hash: MyString
+  recipe_hash: MyString
+  recipe_name: MyString
+  comment: MyString
+  requires_login: false
+  is_featured: false
+  is_approved: false
+  has_private_recipe: false
+
+two:
+  owner_id: 1
+  source_id: 1
+  file_name: MyString
+  title: MyString
+  description: MyText
+  timezone: MyString
+  website: MyString
+  language: MyString
+  schedule: MyString
+  run_distance: 1
+  last_run: 1
+  next_run: 1
+  log: MyText
+  conversion_options: MyString
+  format: MyString
+  device: MyString
+  size: 1
+  hash: MyString
+  recipe_hash: MyString
+  recipe_name: MyString
+  comment: MyString
+  requires_login: false
+  is_featured: false
+  is_approved: false
+  has_private_recipe: false

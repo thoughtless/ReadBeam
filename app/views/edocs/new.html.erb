@@ -1,0 +1,29 @@
+<section>
+	<%= render :partial => 'shared/flash', :locals => {:flash => flash} if flash %>
+	
+  <div class="page-header">
+    <h1>Create a new eDoc</h1>
+  </div>
+<div class="row">
+  <div class="span3 columns">
+    <h2>Clone eDoc</h2>
+    <p>Create a new electronic document you would like to have fetched. Either choose one below or go it alone and write your own calibre recipe. It's up to you.</p>
+    <%= form_tag new_edoc_path, :method => :get, :remote => true do %> 
+      <%= collection_select :source, :id, @all_sources, :id, :title, {}, :onchange => 'this.form.submit()', :class => 'chzn-select' %>
+    <% end %>
+		<% if @edoc.requires_login? %>
+		<div class="alert-message block-message warning" data-alert="alert">
+	    <a class="close" href="#">x</a>
+			<p>This sources <strong>requires a paid subscription with the original publisher</strong>. Make sure you enter your subscription credentials in the <em>Conversion</em> field like so: <code>--username ur_name --password 123_pwd</code>.</p>
+		</div>			
+		<% end %>
+  </div>
+  <div class="span9 columns">
+    <%= render 'form' %>
+  </div>
+</div>
+</section>
+
+<% content_for :javascript do %>
+  $(document).ready(function () { $(".chzn-select").chosen(); });
+<% end %>

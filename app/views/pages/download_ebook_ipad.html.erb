@@ -1,0 +1,35 @@
+# encoding: UTF-8
+
+<section>
+      <div class="hero-unit">
+        <h1>eBooks > iPad</h1>
+        <p><strong>Downloading eBooks to your iPad</strong> is just a click away: Sign-up with the <a href="<%= root_path %>">hosted ebook conversion service</a> ReadBeam and <strong>download your ebooks</strong> in an instant.</p>
+		<p><a class="btn primary large" href="/">Download iPad eBooks &raquo;</a></p>
+      </div>
+      <div class="row">
+        <div class="span4">
+          <h2>Download ePub ebooks</h2>
+          <p>Reading eBooks on the iPad works great. Either test us by downloading the eBook samples on the homepage (<strong>just click on the blue title to download eBook</strong>) or have your own ebooks created for download to your Apple iPad.
+		  </p>
+		</div>
+        <div class="span4">
+          <h2>eBook Download iPad</h2>
+           <p>Once you signed-up you can have all the content of the internet converted and sent to you on a schedule. If you prefer to download eBooks to your iPad manually just wait until the edoc conversion is finished and click on the book's title.</p>
+          <p><a class="btn" href="/">Download ebook now &raquo;</a></p>
+        </div>
+        <div class="span4">
+          <h2>Free eBook Download iPad</h2>
+          <p>Choose between subscribing to an ebook and having it delivered via email or manually downloading it with just one click.</p>
+		    	<p><%= link_to raw('Sign up for free &raquo;'), new_user_registration_path, :class => 'btn primary' %></p>
+        </div>
+</section>
+
+
+<% content_for :big_footer do %>
+  <div style="color:gray">
+    <p>Immediately subscribe to theses ebook sources:</p>
+    <div class="row">
+	    <%= render :partial => "shared/sources", :as => :sources, :object => @all_sources if @all_sources %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,36 @@
+<section>
+	<%= render :partial => 'shared/flash', :locals => {:flash => flash} if flash %>
+  <div class="page-header">
+    <h1><%= link_to "#{@source.title} eBook on ReadBeam", root_url %></h1>
+  </div>
+  <div class="row">
+    <div class="span3">
+      <p>Read <em><%= @source.title %></em> on your iPad or Kindle in no time. Click download to load the free ebook on your reader.</p>
+      <p>Check out all the available public <a href="https://github.com/readbeam/recipes">recipes</a> or write your own with these <a href="http://manual.calibre-ebook.com/news.html">quick start guides</a>. ReadBeam is built on <a href="http://calibre-ebook.com/">calibre</a>, so everything in the <a href="http://manual.calibre-ebook.com/">docs</a> and the <a href="http://www.mobileread.com/forums/forumdisplay.php?f=228">fora</a> applies here as well.</p>
+			<p><%= link_to raw('Download for free &raquo;'), new_user_registration_path, :class => 'btn primary large' %></p>
+    </div>
+    <div class="span9">	
+			<p><%= @source.description %></p>
+			<p><em>Language</em>: <%= @source.language %></p>
+			<p><em>Requires Subscription</em>: <%= @source.requires_login ? "Yes, requires a #{@source.title} subscription" : 'No, it\'s available as free ebook' %></p>
+			<p><em>Schedule</em> <%= Edoc::SCHEDULE[@source.schedule][:nice] %></p>
+		</div>
+	</div>
+</section>
+<section>
+	<div class="page-header">
+	  <h1>Calibre Recipe</h1>
+	</div>
+	<div class="row">
+    <div class="span12">
+			<pre class="prettyprint lang-py">
+			  <%= @source.recipe %>
+			</pre>
+			</p>
+		</div>
+	</div>
+</section>
+
+<% content_for :javascript do %>
+  $(function() {prettyPrint();});
+<% end %>

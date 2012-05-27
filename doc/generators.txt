@@ -1,0 +1,17 @@
+rails generate scaffold User account_email:string device_email:string device:string format:string timezone:string is_admin:boolean send_from_account_email:boolean
+
+rails generate scaffold Edoc owner_id:integer source_id:integer file_name:string title:string description:text timezone:string website:string language:string schedule:string run_distance:integer last_run:integer next_run:integer log:text conversion_options:string format:string device:string size:integer hash:string recipe_hash:string  recipe_name:string comment:string requires_login:boolean is_featured:boolean is_approved:boolean has_private_recipe:boolean
+
+rails generate scaffold Source title:string description:text timezone:string website:string language:string  schedule:string run_distance:integer conversion_options:string recipe_hash:string recipe_name:string  requires_login:boolean
+
+rails generate controller pages calibre_hosting download_ebook_ipad download_ebook_kindle calibre_ebook_conversion kindle_blog_subscribe
+
+rails generate devise:install
+
+rails generate devise User
+
+rails generate mailer UserMailer
+
+rails generate mailer DeviseMailer
+
+#rails generate controller Registrations create

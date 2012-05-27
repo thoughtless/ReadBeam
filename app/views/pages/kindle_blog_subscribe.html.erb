@@ -1,0 +1,40 @@
+# encoding: UTF-8
+
+<section>
+      <div class="hero-unit">
+        <h1>Kindle Blog Subscriptions</h1>
+        <p>Subscribe to frequently updated weblogs on you Kindle. Get changes pushed to your Kindle. Niche content up-to-date now on your Amazon Kindle.</p>
+		<p><a class="btn primary large" href="/">Subscribe to Blogs &raquo;</a></p>
+      </div>
+     <div class="row">
+        <div class="span4">
+          <h2>Kindle Subscriptions</h2>
+          <p>Hosting Caliber has many advantages:
+						<ul>
+							<li>Stay up-to-date with subscriptions</li>
+							<li>No need to manage and update software</li>
+							<li>No hosting bandwidth is wasted</li>
+							<li>eBook conversion is a CPU-intensive task</li>
+						</ul>
+		  		</p>
+        </div>
+        <div class="span4">
+          <h2>Blogs on you Kindle</h2>
+           <p>We are hosting calibre ebook-conversion software for you. All you need to do is add your own recipes or choose one of many hundred pre-made calibre recipes. By running your recipes in the cloud all your recipes are fetched and converted to eDocs every time you want them to. Subscribe to any content on the internet with <a href="<%= root_path %>">hosted calibre on readbeam.com</a></p>
+          <p><a class="btn" href="/">Run your calibre recipes now &raquo;</a></p>
+       </div>
+        <div class="span4">
+          <h2>Blog Subscriptions</h2>
+          <p>Upload your custom calibre recipes to our hosted installation of calibre and you're good to go. No software installation or maintenance. Hosting and running your caliber recipes with us is easy. Many <a href="https://github.com/readbeam/recipes/" target="_blank">pre-made recipes are available</a> here. Instructions on how to <a href="http://www.mobileread.com/forums/showthread.php?t=121439" target="_blank">write your own can be found here</a>.</p>
+		    	<p><%= link_to raw('Sign up for free &raquo;'), new_user_registration_path, :class => 'btn primary' %></p>
+        </div>
+</section>
+
+<% content_for :big_footer do %>
+  <div style="color:gray">
+    <p>Immediately subscribe to theses ebook sources:</p>
+    <div class="row">
+	    <%= render :partial => "shared/sources", :as => :sources, :object => @all_sources if @all_sources %>
+    </div>
+  </div>
+<% end %>

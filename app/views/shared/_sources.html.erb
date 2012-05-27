@@ -1,0 +1,16 @@
+<% max_column_length = (sources.size.to_f/4.0).ceil %>
+<% index = 0 %>
+<% 1.upto(4) do |column_count| %>
+  <% max_column_index = max_column_length * column_count %>
+  <div class="span3 columns">
+   <ul class="unstyled">
+     <% while index < max_column_index %>
+       <% break if index == sources.size %>
+       <li>
+        <%= link_to sources[index].title, sources[index].recipe_name %>
+       </li>
+       <% index += 1 %>
+     <% end %>
+   </ul>
+  </div>
+<% end %>

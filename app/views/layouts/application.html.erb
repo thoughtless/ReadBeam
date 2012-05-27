@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title><%=raw(@page_title || 'Subscribe to Online Content with your Kindle and iPad') %></title>
+  <meta name="description" content="Subscribe to Online Content with your E-Book Reader.">
+  <meta name="author" content="ReadBeam.com">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+	<link rel="shortcut icon" href="/favicon.ico">
+
+  <%= stylesheet_link_tag :bootstrap, :application %>
+  <%= csrf_meta_tags %>
+  <%= yield :header %>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <%= render :partial => "shared/menu" %>
+        </div>
+      </div>
+    </div>
+
+    <%= yield :masthead unless user_signed_in? %>
+  </header>
+
+  <div class="container">
+  <%= yield %>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p style="text-align:center">
+        <%= link_to 'Calibre Hosting', calibre_hosting_path %> |
+        <%= link_to 'Download eBook to iPad', download_ebook_ipad_path %> |
+        <%= link_to 'Download eBook to Kindle', download_ebook_kindle_path %> |
+        <%= link_to 'Calibre eBook Conversion', calibre_ebook_conversion_path %> |
+        <%= link_to 'Subscribe to Blog on Kindle', kindle_blog_subscribe_path %>
+      </p>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+      <p>Enjoy! Designed by <%= link_to 'Tom', 'mailto:tom@readbeam.com' %> &mdash;
+      &#8482;, &reg; and &copy; of the content lies with it's respective owner.</p>
+      <%= yield :big_footer %>
+    </div>
+  </footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+
+  <%= javascript_include_tag :application %>
+
+  <script type="text/javascript"><%= yield :javascript %></script>
+  <script type="text/javascript">
+     var _gaq = _gaq || [];
+       _gaq.push(['_setAccount', 'UA-20291619-1']);
+       _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</body>
+</html>

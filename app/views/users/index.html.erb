@@ -1,0 +1,40 @@
+<section>
+	<%= render :partial => 'shared/flash', :locals => {:flash => flash} if flash %>
+
+  <div class="page-header">
+    <h1>Listing users</h1>
+  </div>
+  <div class="row">
+    <div class="span16">
+			<table class="zebra-striped" id="users_index">
+			  <tr>
+				  <th>ID</th>
+			    <th>Account @</th>
+			    <th>Device @</th>
+			    <th>Device</th>
+			    <th>Last</th>
+			    <th>Subs</th>
+			    <th>&euro;</th>
+			    <th>CT</th>
+			    <th></th>
+			    <th></th>
+			  </tr>
+			
+			<% @users.each do |user| %>
+			  <tr>
+			    <td><%= user.id %></td>
+			    <td><%= user.account_email %></td>
+			    <td><%= user.device_email %></td>
+			    <td><%= user.device %></td>
+			    <td><%= distance_of_time_in_words_to_now(user.current_sign_in_at) if user.current_sign_in_at %></td>
+			    <td><%= user.edocs.count %></td>
+			    <td><%= user.credit %></td>
+			    <td><%= user.computime %></td>
+			    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+			    <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
+			  </tr>
+			<% end %>
+			</table>
+		</div>
+	</div>
+</section>

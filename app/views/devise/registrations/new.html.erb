@@ -1,0 +1,65 @@
+<section>
+	<%= render :partial => 'shared/flash', :locals => {:flash => flash} if flash %>
+
+  <div class="page-header">
+  <h1>Sign up <small>to have any content sent to your ebook reader</small></h1>
+	</div>
+	<div class="row">
+    <div class="span3 columns">
+      <h2>Welcome!</h2>
+      <p>Sign up using at least a working email address and a password between 5..20 characters long. I'll send a confirmation email to this account once you are done.</p>
+	  <p>Please: I'll send you the occasional email about updates or problems with ReadBeam. If you don't like that - simple: Don't sign up. This is not about spamming or ads, this is strictly ReadBeam related stuff. Thank you.</p>
+      <p>For Amazon Kindle check here <a href="https://www.amazon.com/gp/digital/fiona/manage?ie=UTF8&ref_=ya_kindle_sb_myk_button_css#pdocSettings" target="_blank">Manage your Kindle</a> and add
+      <em>'out@readbeam.com'</em> to the list of approved email-addresses.</p>
+      <%= render :partial => "devise/shared/links" %>
+    </div>
+    <div class="span9 columns">
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+        <fieldset>
+          <legend>Create a new account</legend>
+          <div class="clearfix" style="display:none">
+	          <%= f.label :username, 'Username' %>
+            <div class="input">
+							<%= f.text_field :username, :placeholder => 'Robot\s username', :title => 'Fill this if you are a robot.', :class => :xlarge %>
+				  	</div>
+        	</div> <!-- /clearfix -->
+          <div class="clearfix">
+            <%= f.label :account_email, 'Account email' %>
+            <div class="input">
+              <%= f.email_field :account_email, :placeholder => 'john.doe@gmail.com', :required => true, :class => :xlarge %>
+            </div>
+          </div> <!-- /clearfix -->
+          <div class="clearfix">
+            <%= f.label :password %>
+            <div class="input">
+              <%= f.password_field :password, :title => '5..20 characters will do', :required => true, :class => :xlarge %>
+            </div>
+          </div> <!-- /clearfix -->
+          <div class="clearfix">
+            <%= f.label :password_confirmation %>
+            <div class="input">
+              <%= f.password_field :password_confirmation, :title => 'To avoid typos type the above password again here', :required => true, :class => :xlarge %>
+            </div>
+          </div> <!-- /clearfix -->
+          <div class="clearfix">
+            <%= f.label :device, 'Reading Device' %>
+            <div class="input">
+              <%= f.select :device, Edoc::DEVICE.map{|key, value| [value, key]} %>
+            </div>
+          </div> <!-- /clearfix -->
+          <div class="clearfix">
+            <%= f.label :device_email, 'Device email' %>
+            <div class="input">
+              <%= f.email_field :device_email, :placeholder => 'john.doe@free.kindle.com', :title => 'If you want your eDocs to another email address - like with the Amazon Kindle.', :class => :xlarge %>
+            </div>
+          </div> <!-- /clearfix -->
+          <div class="actions">
+            <%= f.submit 'Sign up', :class => 'btn primary' %>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+<% end %>
+</section>

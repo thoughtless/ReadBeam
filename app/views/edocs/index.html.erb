@@ -1,0 +1,55 @@
+<section>
+	<%= render :partial => 'shared/flash', :locals => {:flash => flash} if flash %>
+
+  <div class="page-header">
+    <h1>Manage your eDocs <small>to get all the inspiration you can handle</small></h1>
+  </div>
+  <div class="row">
+    <div class="span3">
+      <p>Please consider donating a few dollars for example to <a href="http://iccf-holland.org/index.html">this charity</a>.</p>
+      <p>Check out all the available public <a href="https://github.com/readbeam/recipes>">recipes</a> or write your own with these <a href="http://manual.calibre-ebook.com/news.html">quick start guides</a>. ReadBeam is built on <a href="http://calibre-ebook.com/">calibre</a>, so everything in the <a href="http://manual.calibre-ebook.com/">docs</a> and the <a href="http://www.mobileread.com/forums/forumdisplay.php?s=cdea8fe1c772b4b1bb2c3d4282574549&f=228">fora</a> applies to ReadBeam as well.</p>
+    	<%= link_to 'Create a new eDoc', new_edoc_path, :class => 'btn primary large' %>
+    </div>
+    <div class="span9">
+  	<% if @edocs %>
+    <table>
+      <thead>
+      </thead>
+				<tr>
+					<td>Title</td>
+					<td>Description</td>
+					<td>Tags</td>
+				</tr>
+      </tbody>
+  	  <% @edocs.each do |edoc| %>
+  	  	<tr style="vertical-align:top">
+        	<td>
+            <strong><%= link_to edoc.title, edoc_path(edoc) %></strong>
+         </td>
+         <td>
+            <%= link_to 'Recipe', edoc %> |
+						<%= link_to 'Log', edoc_log_path(edoc) %> |
+            <%= link_to 'Edit', edit_edoc_path(edoc) %> |
+            <%= link_to 'Del', edoc, confirm: 'Are you sure?', :method => :delete %> |
+						<% if edoc.is_mailed? %>
+						<%= link_to 'Unsub', edoc_toggle_mailing_path(edoc.id), :title => 'Stop having the eDoc emailed to you.' %>
+						<% else %>
+            	<%= link_to 'Sub', edoc_toggle_mailing_path(edoc.id), :title => "Have the eDoc sent to #{current_user.distribution_email} on schedule." %>
+						<% end %>
+            <%= link_to '| Refresh', edoc_print_path(edoc), :title => 'Refetch the news source and create a new eDoc; this will take a few minutes to finish.' %>
+            <%= link_to '| Mail', edoc_mail_path(edoc), :title => "Have the eDoc mailed to #{current_user.distribution_email} once." if edoc.is_downloadable %>
+						<%= link_to '| Download', edoc_download_path(edoc), :title => 'Download the currently available version of the eDoc.' if edoc.is_downloadable %>
+          <%= raw("<br /> #{truncate(edoc.description, :length => 140)}") if edoc.description %>
+		  	</td>
+					<td>
+						<%= render :partial => 'shared/tags', :locals => {:edoc => edoc} %>
+					</td>
+  	    </tr>
+      <% end %>
+      </tbody>
+  	</table>
+  	<% else %>
+  	  <p>You don't have any eDocs yet; go ahead and create a new one:</p>
+  	<% end %>
+  </div>
+</section>

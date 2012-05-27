@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  account_email: MyString
+  device_email: MyString
+  device: MyString
+  format: MyString
+  timezone: MyString
+  is_admin: false
+  send_from_account_email: false
+
+two:
+  account_email: MyString
+  device_email: MyString
+  device: MyString
+  format: MyString
+  timezone: MyString
+  is_admin: false
+  send_from_account_email: false

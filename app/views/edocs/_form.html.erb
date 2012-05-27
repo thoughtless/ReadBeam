@@ -1,0 +1,120 @@
+<%= form_for(@edoc, :html => {:multipart => true}) do |f| %>
+  <% if @edoc.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@edoc.errors.count, "error") %> prohibited this edoc from being saved:</h2>
+
+      <ul>
+      <% @edoc.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <div class="clearfix">
+      <%= f.label :title %>
+      <div class="input">
+        <%= f.text_field :title, :placeholder => 'New York Times', :required => true %>
+      </div>
+    </div>
+    <div class="clearfix">
+      <%= f.label :description %>
+      <div class="input">
+        <%= f.text_field :description, :placeholder => 'All the News That\'s Fit to Print.' %>
+      </div>
+    </div>
+    <div class="clearfix">
+      <%= f.label :conversion %>
+      <div class="input">
+				<% if @edoc.requires_login? %>
+    			<%= f.text_field :conversion, :placeholder => '--username donald_duck --password minni_mouse', :required => true %>
+				<% else %>
+      		<%= f.text_field :conversion, :placeholder => '--username donald_duck --password minni_mouse' %>
+				<% end %>
+      </div>
+    </div>
+    <div class="clearfix">
+      <%= f.label :device %>
+      <div class="input">
+        <%= f.select :device, Edoc::DEVICE.map{|key, value| [value, key]} %>
+      </div>
+    </div>
+    <div class="clearfix">
+      <%= f.label :timezone %>
+      <div class="input">
+        <%= f.select :timezone, Edoc::TIMEZONE.map{|key, value| [value[:nice], key]} %>
+      </div>
+    </div>
+    <div class="clearfix">
+      <%= f.label :schedule %>
+      <div class="input">
+        <%= f.select :schedule, Edoc::SCHEDULE.map{|key, value| [value[:nice], key]} %>
+      </div>
+    </div>
+    <div class="clearfix">
+      <% if @edoc.recipe_name %>
+        <%= f.label :tmp_recipe, 'Upload new recipe file (Optional)' %>
+        <div class="input">
+          <%= f.file_field :tmp_recipe %>
+          <span class="help-block">
+            <%= "Current recipe file: #{@edoc.recipe_name}.recipe" %>
+          </span>
+        </div>
+      <% else %>
+        <%= f.label :tmp_recipe, 'Upload recipe file' %>
+        <div class="input">
+           <%= f.file_field :tmp_recipe, :required => true %>
+        </div>
+      <% end %>
+    </div>
+    <div class="clearfix">
+      <%= f.label :is_mailed, "Mail on schedule?" %><br />
+      <div class="input">
+        <%= f.check_box :is_mailed, :title => "Want to have this document mailed to #{current_user.distribution_email}?" %>
+      </div>
+    </div>
+
+    <% if current_user.is_admin? %>
+    <div class="clearfix">
+      <%= f.label :owner_id %>
+      <div class="input">
+        <%= f.text_field :owner_id %>
+      </div>
+    </div>
+    <div class="clearfix">
+      <%= f.label :comment %>
+      <div class="input">
+        <%= f.text_area :comment, :rows => 5 %>
+      </div>
+    </div>
+    <div class="clearfix">
+      <%= f.label :is_approved %><br />
+      <div class="input">
+        <%= f.check_box :is_approved %>
+      </div>
+    </div>
+    <div class="clearfix">
+      <%= f.label :has_private_recipe %><br />
+      <div class="input">
+        <%= f.check_box :has_private_recipe %>
+      </div>
+    </div>
+    <div class="clearfix">
+      <%= f.label :has_error %><br />
+      <div class="input">
+        <%= f.check_box :has_error%>
+      </div>
+    </div>
+    <% end %>
+
+    <%= f.hidden_field :recipe_name if @edoc.recipe_name %>
+    <%= f.hidden_field :source_id if @edoc.source_id %>
+    <%= f.hidden_field :language if @edoc.language %>
+    <%= f.hidden_field :requires_login if @edoc.requires_login %>
+
+    <div class="actions">
+      <%= f.submit 'Save eDoc' , :class => 'btn primary' %>
+    </div>
+  </fieldset>
+<% end %>

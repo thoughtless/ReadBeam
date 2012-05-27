@@ -1,0 +1,34 @@
+# encoding: UTF-8
+
+<section>
+      <div class="hero-unit">
+        <h1>eBooks > Kindle</h1>
+        <p><strong>Downloading eBooks to your Kindle</strong> is easy: Sign-up with the <a href="<%= root_path %>"> ebook converter</a> ReadBeam and <strong>download your ebooks</strong> in an instant.</p>
+		<p><a class="btn primary large" href="/">Download Kindle eBooks &raquo;</a></p>
+      </div>
+      <div class="row">
+        <div class="span4">
+          <h2>Download mobi eBooks</h2>
+          <p>Reading eBooks on the <strong>Kindle, Kindle DX or Kindle Fire</strong> works great. Sign-up to have ebooks for your Kindle prepared for download (<strong>just click on the blue title to download eBook</strong>). The ebooks on the start page are available for free.
+		  </p>
+          <p><a class="btn" href="/">Download ebook now &raquo;</a></p>
+		</div>
+        <div class="span4">
+          <h2>eBook Download Kindle</h2>
+           <p>Once you signed-up you can have all the content of the internet converted and sent to your device on a schedule. If you prefer to download eBooks to your Kindle manually just wait until the eDoc conversion is finished and click on the book's title.</p>
+        </div>
+        <div class="span4">
+          <h2>Free eBook Kindle</h2>
+          <p>Choose between subscribing to an ebook and having it delivered via email or manually downloading it with just one click. Navigation, compression and all other adjustments are taken care of for you. You won't see a difference between the ebooks for download on ReadBeam and the ones at <a href="http://www.amazon.com/kindle-store-ebooks-newspapers-blogs/b/ref=sd_allcat_kstore?ie=UTF8&node=133141011" target="_blank">Amazon's Kindle Store</a>.</p>
+		    	<p><%= link_to raw('Sign up for free &raquo;'), new_user_registration_path, :class => 'btn primary' %></p>
+        </div>
+</section>
+
+<% content_for :big_footer do %>
+  <div style="color:gray">
+    <p>Immediately subscribe to theses ebook sources:</p>
+    <div class="row">
+	    <%= render :partial => "shared/sources", :as => :sources, :object => @all_sources if @all_sources %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,43 @@
+# encoding: UTF-8
+<section>
+      <div class="hero-unit">
+        <h1>Calibre Hosting</h1>
+        <p><strong>eBook conversion</strong> made simple with the calibre ebook conversion software. Either <a target="_blank" href="http://www.calibre-ebook.com">install calibre locally</a> on your linux box or <strong>host your calibre recipes on our servers</strong>.</p>
+				<p><%= link_to raw('Host your Calibre Recipes &raquo;'), new_user_registration_path, :class => 'btn primary large' %></p>
+      </div>
+      <div class="row">
+        <div class="span4">
+          <h2>Hosting Calibre</h2>
+          <p>Hosting Calibre has many advantages:
+			<ul>
+				<li>No need to run and maintain your own calibre server</li>
+				<li>No need to manage and update caliber and recipe</li>
+				<li>Run your recipes even when your PC is off</li>
+				<li>eBook conversion is a CPU-intensive task</li>
+			</ul>
+		  </p>
+		  <p>Your main disadvantage with hosting calibre is that you can not use the library feature for old ebooks. So make sure,
+			to back-up your converted ebooks before deleting them.</p>
+        </div>
+        <div class="span4">
+          <h2>Hosted Caliber</h2>
+           <p>We are hosting calibre ebook-conversion software for you. All you need to do is add your own recipes or choose one of many hundred pre-made calibre recipes. By running your recipes in the cloud all your recipes are fetched and converted to eDocs every time you want them to. Subscribe to any content on the internet with <a href="/">hosted calibre on readbeam.com</a></p>
+					<p><%= link_to raw('Run your own calibre recipes &raquo;'), root_path, :class => 'btn' %></p>
+
+       </div>
+        <div class="span4">
+          <h2>Calibre in the Cloud</h2>
+          <p>Upload your custom caliber recipes to our hosted installation of calibre and you're good to go. No software installation or maintenance. Hosting and running your caliber recipes with us is easy. Many <a href="https://github.com/readbeam/recipes/" target="_blank">pre-made recipes are available</a> here. Instructions on how to <a href="http://www.mobileread.com/forums/showthread.php?t=121439" target="_blank">write your own can be found here</a>.</p>
+		  <p><a href="http://wirgruender.org">Steuerberater für GmbH Gründer gibt's beim 'Wir Gründer' e.V.</a></p>
+		    	<p><%= link_to raw('Sign up for free &raquo;'), new_user_registration_path, :class => 'btn primary' %></p>
+        </div>
+</section>
+
+<% content_for :big_footer do %>
+  <div style="color:gray">
+    <p>Immediately subscribe to theses ebook sources:</p>
+    <div class="row">
+	    <%= render :partial => "shared/sources", :as => :sources, :object => @all_sources if @all_sources %>
+    </div>
+  </div>
+<% end %>

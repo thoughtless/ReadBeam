@@ -1,0 +1,70 @@
+<section>
+	<%= render :partial => 'shared/flash', :locals => {:flash => flash} if flash %>
+
+	<div class="page-header">
+	  <h1>Edit <%= resource_name.to_s.humanize %></h1>
+	</div>
+	<div class="row">
+	    <div class="span3 columns">
+	      <h2>Edit user account</h2>
+	      <p>Please be aware that you need to enter your current password if you want to save any changes to your account.</p>
+	      <p>For Amazon Kindle check here <a href="https://www.amazon.com/gp/digital/fiona/manage?ie=UTF8&ref_=ya_kindle_sb_myk_button_css#pdocSettings" target="_blank">Manage your Kindle</a> and add
+	      <em>'out@readbeam.com'</em> to the list of approved email-addresses.</p>
+	      <p>Unhappy? <%= link_to "Delete my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %></p>
+	    </div>
+	    <div class="span9 columns">
+	      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+	        <%= devise_error_messages! %>
+	        <fieldset>
+	          <legend>Edit your account</legend>
+	          <div class="clearfix">
+	            <%= f.label :account_email, 'Your account email' %>
+	            <div class="input">
+	              <%= f.email_field :account_email, :class => :xlarge %></p>
+	            </div>
+	          </div> <!-- /clearfix -->
+	          <div class="clearfix">
+	            <%= f.label :password %>
+	            <div class="input">
+	              <%= f.password_field :password, :title => '5..20 characters will do', :class => :xlarge %></p>
+	            </div>
+	          </div> <!-- /clearfix -->
+	          <div class="clearfix">
+	            <%= f.label :password_confirmation %>
+	            <div class="input">
+	              <%= f.password_field :password_confirmation, :title => 'To avoid typos type the above password again here', :class => :xlarge %></p>
+	            </div>
+	          </div> <!-- /clearfix -->
+	          <div class="clearfix">
+	            <%= f.label :device, 'Reading Device' %>
+	            <div class="input">
+	              <%= f.select :device, Edoc::DEVICE.map{|key, value| [value, key]} %></p>
+	            </div>
+	          </div> <!-- /clearfix -->
+	          <div class="clearfix">
+	            <%= f.label :format, 'eDoc Format' %>
+	            <div class="input">
+	              <%= f.select :format, Edoc::FORMAT.map{|key, value| [value, key]} %></p>
+	            </div>
+	          </div> <!-- /clearfix -->
+	          <div class="clearfix">
+	            <%= f.label :device_email, 'Device\'s email address' %>
+	            <div class="input">
+	              <%= f.email_field :device_email, :placeholder => 'john.doe@free.kindle.com', :title => 'If you want your eDocs sent to another email address.', :class => :xlarge %></p>
+	            </div>
+	          </div> <!-- /clearfix -->
+	          <div class="clearfix">
+	            <%= f.label :current_password %>
+	            <div class="input">
+	              <%= f.password_field :current_password, :title => 'Enter your current password to confirm your changes', :required => true, :class => :xlarge %></p>
+	            </div>
+	          </div> <!-- /clearfix -->
+	          <div class="actions">
+	            <%= f.submit 'Save changes', :class => 'btn primary' %>
+	          </div>
+	        </fieldset>
+	      </form>
+	    </div>
+	  </div>
+	<% end %>
+</section>

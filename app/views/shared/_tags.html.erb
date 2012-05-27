@@ -1,0 +1,14 @@
+<span class="label label-info" title="Time in UTC"><%= edoc.last_run ? "< #{distance_of_time_in_words_to_now(edoc.last_run)}" : 'Not yet run' %></span>
+<span class="label label-info"title="Time in UTC"><%= Time.at(edoc.next_run).future? ? "> #{distance_of_time_in_words_to_now(Time.at(edoc.next_run).utc)}" : 'Refresh imminent' %></span>
+<%= raw("<span class=\"label label-success\">#{Edoc::DEVICE[edoc.device]}</span>") unless edoc.device.empty? %>
+<%= raw("<span class=\"label label-warning\" title=\"This eDoc is fetched and converted according to your own recipe.\">Recipe</span>") if edoc.has_private_recipe? %>
+<%= raw("<span class=\"label label-warning\" title=\"The source you are fetching requires login credentials from the publisher. Please acquire them and enter them in the Conversion field in the eDoc.\">Login&nbsp;required</span>") if edoc.requires_login? %>
+<%= raw("<span class=\"label label-warning\" title=\"Your eDoc needs to be approved by an administrator. This may take a few hours.\">Not yet approved</span>") unless edoc.is_approved? %>
+<%= raw("<span class=\"label label-warning\">Comment</span>") unless edoc.comment.blank? %>
+<%= raw("<span class=\"label label-important\" title=\"Some error happened during conversion. Check log in 'Show'.\">Error!</span>") if edoc.has_error? %>
+<%= raw("<span class=\"label\" title=\"Time in seconds it took to convert the eDoc.\">#{edoc.computime}&nbsp;secs</span>") if edoc.computime %>
+<%= raw("<span class=\"label\">Mail</span>") if edoc.is_mailed? %>
+<%= edoc.is_downloadable ? raw("<span class=\"label\">#{number_to_human_size(File.size(edoc.file_url))}</span>") : raw("<span class=\"label important\">No&nbsp;File</span>")%>
+<% if current_user and current_user.is_admin? %>
+<span class="label">OID<%= edoc.owner_id %></span>
+<% end %>

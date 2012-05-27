@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Account email:</b>
+  <%= @user.account_email %>
+</p>
+
+<p>
+  <b>Device email:</b>
+  <%= @user.device_email %>
+</p>
+
+<p>
+  <b>Device:</b>
+  <%= @user.device %>
+</p>
+
+<p>
+  <b>Format:</b>
+  <%= @user.format %>
+</p>
+
+<p>
+  <b>Timezone:</b>
+  <%= @user.timezone %>
+</p>
+
+<p>
+  <b>Is admin:</b>
+  <%= @user.is_admin %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
