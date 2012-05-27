@@ -19,8 +19,8 @@ Just copy and past one of these recipes or write your own and - please - publish
 Please hack away on ReadBeam. It is open-sourced under the MIT-license.
 
 ## More info
-* [Calibre original recipes repository](http://bazaar.launchpad.net/%7Ekovid/calibre/trunk/files/head%3A/resources/recipes/)
-* [Recipe API description](http://calibre-ebook.com/user_manual/news_recipe.html)
+* [Calibre original recipes repository](http://bazaar.launchpad.net/~kovid/calibre/trunk/files/head:/recipes/)
+* [Recipe API description](http://manual.calibre-ebook.com/news_recipe.html)
 
 ## Questions?
 tom{at}readbeam.com
